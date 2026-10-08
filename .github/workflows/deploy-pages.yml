@@ -21,12 +21,19 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout mobile customizations
+        uses: actions/checkout@v4
+
       - name: Prepare site
         run: |
           mkdir -p _site
           curl -fsSL "https://d2ol7oe51mr4n9.cloudfront.net/user_3JsuDKctGLEEYb47UIIkKCoKZ9a/caf2ad86-a414-4907-ad16-628ec53d941d.zip" -o /tmp/geosprint.zip
           unzip -q /tmp/geosprint.zip -d /tmp/geosprint
           cp -R /tmp/geosprint/geosprint_10ano/. _site/
+          cp mobile-overrides.css _site/mobile-overrides.css
+          cp mobile-overrides.js _site/mobile-overrides.js
+          sed -i 's#</head>#<link rel="stylesheet" href="mobile-overrides.css"></head>#' _site/index.html
+          sed -i 's#</body>#<script src="mobile-overrides.js"></script></body>#' _site/index.html
           touch _site/.nojekyll
 
       - name: Configure Pages
