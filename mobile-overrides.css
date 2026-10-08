@@ -9,7 +9,7 @@
   .main{
     width:100%;
     max-width:none;
-    padding:calc(78px + env(safe-area-inset-top)) 14px calc(92px + env(safe-area-inset-bottom));
+    padding:calc(78px + env(safe-area-inset-top)) 14px calc(28px + env(safe-area-inset-bottom));
   }
 
   .mobile-topbar{
@@ -51,7 +51,7 @@
   .mobile-menu-backdrop.show{display:block}
   .mobile-menu-sheet{
     position:fixed;z-index:59;left:10px;right:10px;
-    bottom:calc(82px + env(safe-area-inset-bottom));
+    bottom:calc(12px + env(safe-area-inset-bottom));
     max-height:72vh;overflow:auto;
     background:#081a23;border:1px solid #2b5060;border-radius:24px;
     padding:16px;box-shadow:0 28px 80px rgba(0,0,0,.55);
@@ -76,26 +76,8 @@
   .mobile-menu-item.active{border-color:var(--teal);background:#10323b}
   body.mobile-menu-open{overflow:hidden}
 
-  .mobile-nav{
-    display:grid!important;
-    grid-template-columns:repeat(5,1fr);
-    position:fixed;left:0;right:0;bottom:0;z-index:54;
-    height:auto;min-height:calc(68px + env(safe-area-inset-bottom));
-    padding:5px 5px env(safe-area-inset-bottom);
-    background:rgba(5,17,24,.97);
-    border-top:1px solid var(--line);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    overflow:visible;
-  }
-  .mobile-nav button{
-    min-width:0!important;min-height:58px;flex:none!important;
-    border:0;background:transparent;color:var(--muted);
-    padding:5px 2px;font-size:10px;line-height:1.1;cursor:pointer;border-radius:12px;
-  }
-  .mobile-nav button .mn-icon{display:block;font-size:21px;line-height:1.15;margin-bottom:3px}
-  .mobile-nav button .mn-label{display:block}
-  .mobile-nav button.active{color:var(--teal);background:rgba(45,212,191,.08)}
+  /* Mobile uses only the hamburger menu. */
+  .mobile-nav{display:none!important}
 
   .hero,.grid2,.grid3,.lab-wrap,.flash-area{grid-template-columns:1fr}
   .hero{gap:12px;margin-bottom:16px}
